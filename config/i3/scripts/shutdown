@@ -1,0 +1,12 @@
+
+#!/bin/bash
+
+# Import the colors
+. "${HOME}/.cache/wal/colors.sh"
+
+poweroff()   { shutdown now    ;}
+restart()    { killall -HUP dwm     ;}
+reboot()     { reboot          ;}
+
+func="$(declare -F | awk '{print $3}' | dmenu -l 4 -i -p "Powermenu:" -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15" )"
+[ -z "$func" ] || "$func"

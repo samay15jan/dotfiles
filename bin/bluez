@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#bcn, Bluetooth Connect
+. "${HOME}/.cache/wal/colors.sh"
+
+select=$(bluetoothctl devices | awk {'print $3'} | dmenu -l 10 -p connect -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"  )
+MAC=$(bluetoothctl devices | grep $select | awk {'print $2'})
+
+connect=$(bluetoothctl info $MAC | grep Connected: | awk '{print $2}')
+if [[ $connect = no ]]; then
+        notify-send "Attempting to connect to $select"
+        bluetoothctl connect $MAC || notify-send "Failed to Connect"
+else
+        notify-send "Attempting to disconnect $select"
+        bluetoothctl disconnect $MAC
+fi
