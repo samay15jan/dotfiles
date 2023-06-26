@@ -1,4 +1,4 @@
-// The keys that are common to all standard layouts.
+// The keys that are common to all standard layouts. location = /usr/share/X11/xkb/symbols/pc
 default partial alphanumeric_keys modifier_keys
 xkb_symbols "pc105" {
 
