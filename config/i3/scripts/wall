@@ -1,0 +1,8 @@
+#!/bin/bash
+# Import the colors.
+. "${HOME}/.cache/wal/colors.sh"
+
+cd ~/Wallpaper
+location=$("shuf -i1-17 -n1")
+wal -i ~/Wallpaper/$location
+echo "feh --bg-scale ~/Wallpaper/$location" > ~/.config/i3/scripts/wallpaper
