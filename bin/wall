@@ -5,4 +5,6 @@
 cd ~/Wallpaper
 location=$(ls | dmenu -l 10 -p Select_Wallpaper -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15" )
 wal -i ~/Wallpaper/$location
-echo "feh --bg-scale ~/Wallpaper/$location" > ~/.config/i3/scripts/wallpaper
+cd ~/.config/i3/scripts/
+./polybar-color
+i3-msg reload
