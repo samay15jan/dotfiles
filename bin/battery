@@ -1,0 +1,44 @@
+#!/usr/bin/perl
+
+
+use strict;
+use warnings;
+use utf8;
+
+my $acpi;
+my $status;
+my $percent;
+my $full_text;
+my $short_text;
+my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+my $audio_file = "~/.config/polybar/sound.wav";
+
+# Read the first line of the "acpi" command output
+
+open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or
+ 
+die;
+$acpi = <ACPI>;
+close(ACPI);
+
+# Fail on unexpected output
+
+if ($acpi !~ /: (\w+), (\d+)%/) {
+	die
+ 
+"$acpi\n";
+}
+
+$status = $1;
+$percent = $2;
+$full_text = "$percent%";
+
+# Print text
+print "$full_text\n";
+
+if ($percent <= 10 || $percent >= 100) {
+  # Play the audio file
+  system("paplay $audio_file");
+}
+
+exit(0);

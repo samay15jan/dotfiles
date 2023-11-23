@@ -1,1 +1,2 @@
-# Linux config files
+#Arch Linux Config Files
+

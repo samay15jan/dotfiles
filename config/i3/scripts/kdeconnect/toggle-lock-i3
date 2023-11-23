@@ -1,8 +1,0 @@
-# toggle i3lock
-
-ps cax | grep i3lock > /dev/null
-if [ $? -eq 0 ]; then
-  killall i3lock -c /home/samay/Wallpaper/rock.jpg
-else
-  i3lock -F -i /home/samay/Wallpaper/rock.jpg
-fi
